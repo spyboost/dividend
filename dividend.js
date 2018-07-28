@@ -11,8 +11,8 @@
     return r;
   }, {});
   
-  const collectDataFromTable = (selector, dateIndex, amountIndex) => {
-    const trItems = document.querySelectorAll('#quotes_content_left_dividendhistoryGrid tbody tr');
+  const collectDataFromTable = (trSelector, dateIndex, amountIndex) => {
+    const trItems = document.querySelectorAll(trSelector);
     const items = [];
     trItems.forEach(trItem => {
       const tdItems = trItem.querySelectorAll('td');
