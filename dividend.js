@@ -1,5 +1,12 @@
 (function(window) {
   
+  const hostToConfig = {
+    'invesco.com': {trSelector: '#distributionTable tbody tr', dateIndex: 0, amountIndex: 4},
+    'ishares.com': {trSelector: '#distroTable tbody tr', dateIndex: 0, amountIndex: 1},
+    'nasdaq.com': {trSelector: '#quotes_content_left_dividendhistoryGrid tbody tr', dateIndex: 0, amountIndex: 2},
+    'proshares.com': {trSelector: 'table.distribution-table tbody tr', dateIndex: 0, amountIndex: 3},
+  };
+  
   const groupByYear = items => items.reduce((r, v) => {
     const groupItem = r[v.year];
     if (groupItem) {
@@ -32,6 +39,16 @@
     });
     const yearToData = groupByYear(items);
     return yearToData;
+  };
+  
+  const collectFromSite = () => {
+    const host = location.host;
+    const config = hostToConfig[host];
+    if (config) {
+      return collectDataFromTable(config.trSelector, config.dateIndex, config.amountIndex);
+    } else {
+      console.error(`No config for ${host}`);
+    }
   };
   
   window.dividend = {
