@@ -18,7 +18,8 @@
       const tdItems = trItem.querySelectorAll('td');
       const dateString = tdItems[dateIndex].innerText;
       const amountString = tdItems[amountIndex].innerText;
-      const amount = parseFloat(amountString);
+      const amountStringJustNumber = amountString.replace(/[^\d\.]/g,'');
+      const amount = parseFloat(amountStringJustNumber);
       const date = new Date(dateString);
       const year = date.getFullYear();
       const item = {year, amount};
