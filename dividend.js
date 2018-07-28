@@ -42,7 +42,7 @@
   };
   
   const collectFromSite = () => {
-    const host = location.host;
+    const host = location.host.replace('www.', '');
     const config = hostToConfig[host];
     if (config) {
       return collectDataFromTable(config.trSelector, config.dateIndex, config.amountIndex);
