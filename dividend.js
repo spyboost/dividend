@@ -17,9 +17,9 @@
     trItems.forEach(trItem => {
       const tdItems = trItem.querySelectorAll('td');
       const dateString = tdItems[dateIndex].innerText;
+      const date = new Date(dateString);
       // A naive and quick way to check if the row contains data and is not a header.
       // Check if the date is a valid date per https://stackoverflow.com/a/1353711
-      const date = new Date(dateString);
       if (!isNaN(date)) {
         const amountString = tdItems[amountIndex].innerText;
         const amountStringJustNumber = amountString.replace(/[^\d\.]/g,'');
