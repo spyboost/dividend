@@ -53,6 +53,7 @@
   
   window.dividend = {
     groupByYear,
-    collectDataFromTable
+    collectDataFromTable,
+    collectFromSite
   };
 })(window);
